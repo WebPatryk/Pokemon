@@ -1,0 +1,46 @@
+.random-container{
+    color:#FF8000;
+
+ 
+}
+.btn-random-pokemon{
+    display: block;
+    margin: 4rem auto;
+    padding: 20px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color: #F5B4B4;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 2rem;
+    border-radius: 50px;
+    transition: all .3s ease-in-out;
+   
+}
+.btn-random-pokemon:hover{
+    transform: scale(1.2)
+}
+.pokemon-field{
+    width: 100%;
+}
+.pokemon-photo{
+    display: block;
+    margin: 4rem auto;
+    width: 300px;
+    text-align: center;
+}
+.pokemon-name{
+    font-size: 5rem;
+    text-transform: uppercase;
+    color: #F5B4B4;
+    margin: 2rem auto;
+    text-align: center;
+ 
+   
+}
+.pokemon-title{
+    width:100%;
+    text-align: center;
+}
