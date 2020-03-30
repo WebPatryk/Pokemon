@@ -1,3 +1,6 @@
+.short-name-container{
+
+}
 .center-info{
      display: flex;
     justify-content: center;
@@ -5,7 +8,7 @@
     align-items: center;
     flex-direction: row;
     text-transform: uppercase;
-    /* padding: 30px; */
+   
 }
 .one-info, .two-info, .three-info{
     padding: 30px;
@@ -15,11 +18,32 @@
 }
 .info-details{
     display: block;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
     margin: 0 auto;
 }
 i{
-    font-size:2rem;
+    font-size:1.5rem;
     padding: 10px;  
+}
+.buttonsDetails{
+    width: 400px !important;
+    display: block;
+    margin: 4rem auto;
+    padding: 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background-color: #F5B4B4;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    border-radius: 50px;
+    transition: all .3s ease-in-out;
+    
+}
+.buttonsDetails:hover{
+    color: #fff;
+    transform: scale(1.1);
 }

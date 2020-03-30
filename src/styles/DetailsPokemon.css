@@ -1,6 +1,8 @@
 .detailsPokemon-container{
     color: #fff;
-    background-image: url("../images/gradient.jpg");
+    /* background-image: url("../images/gradient.jpg");
+     */
+     background-image: linear-gradient(154deg,transparent, #F5B4B4, rgb(255, 230, 230),rgb(255, 51, 51));
     background-size: cover;
     width: 100%;
     min-height: 100%;
@@ -13,7 +15,7 @@
 
 .leftDetails h1{
     font-size: 6rem;
-    color: #F5B4B4;
+    color: rgb(131, 81, 81);
     text-transform: uppercase;
     font-weight: bold;
     padding: 20px;
@@ -51,25 +53,32 @@
     grid-template-columns:1fr;
     align-self: start;
     margin-top: 3rem;
+    background-color: rgba(206, 206, 206, 0.479);
+    width: 90%;
 }
 .first-abilities,.second-abilities, .third-abilities, .fourth-abilities, .fifth-abilities , .sixth-abilities{
  display: flex;
- justify-content: center;
+ justify-content: space-between;
  align-items: center;
- width: 90%;
+
+
 
 
 }
 .first-abilities h1,.second-abilities h1, .third-abilities h1, .fourth-abilities h1, .fifth-abilities h1 , .sixth-abilities h1{
-    flex: .5;
-    font-size: 1.6rem;
-
+    /* flex: .4; */
+    font-size: 1.2rem;
+    margin-top: 20px;
+    text-align: justify;
+    width: 25%;
+    margin-left: 3.5rem;
 }
 .distance{
     flex: 1;
     display: inline-block;
     height: 30px;
     background-color: white;
+    max-width: 100%;
 
 }
 .bar{
@@ -82,14 +91,15 @@
     line-height: 30px;
    padding-right: 20px;
 }
-.describtion-details{
+.describtion-details h2{
     color: #633535;
-    font-size: .8rem;
-    margin-top: 3rem;
+    font-size: 1rem;
+    margin-top: 2rem;
     justify-self: center;
- 
-    
+    width: 60%;
+    margin-left: 3.5rem;
 }
+
 .back{
 
     justify-self: start;
@@ -103,6 +113,7 @@
     color: #a05656;
     opacity: .8;
     transition: .3s;
+    width: 25%;
 }
 
 .back:hover{
@@ -116,4 +127,44 @@
     margin-right: 1rem;
     opacity: .7;
 
+}
+.main-abilities{
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgba(206, 206, 206, 0.712);
+    width: 90%;
+   
+    padding: 30px 20px;
+}
+.logo-abilities{
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin-right: 1rem;
+}
+.abilities-content h1{
+    font-size: 1.5rem;
+    color: rgb(236, 6, 6);
+ 
+ 
+    
+    font-weight: bold;
+}
+.main-abilities-info{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+}
+.main-abilities-info h2{
+    margin-top: 1rem;
+    font-size: 1.3rem;
+}
+.progress{
+    margin: 1.1rem 2rem 0 2rem;
+    height: 20px !important;
+    text-align: justify;
+    width: 100%;
 }

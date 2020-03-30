@@ -4,7 +4,9 @@
     box-sizing: border-box;
 }
 html{
-
+    /* height: 200vh; */
+    width: 100%;
+    overflow-x: hidden;
 }
 body{
     color: #fff;
@@ -12,6 +14,11 @@ body{
     font-family: 'Open Sans', sans-serif;
 
 }
+.random-container{
+    padding-top: 2rem;
+    min-height: 15rem;
+    padding-bottom: 2rem;
+}
 .one-page{
-    /* height: 100vh; */
+
 }
