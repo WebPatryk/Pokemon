@@ -1,0 +1,10 @@
+@media  screen and (max-width:600px){
+.typing-pokemon{
+    width: 70%;
+    margin: 0 auto;
+    font-size: 1.3rem !important;
+}
+img{
+    width: 200px;
+}
+}

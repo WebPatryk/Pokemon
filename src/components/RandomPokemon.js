@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import '../styles/RandomPokemon.css';
 export default function RandomPokemon({ name, id, effect }) {
 
     const [error, setError] = useState('System cannot find the image:(')

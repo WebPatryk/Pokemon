@@ -1,3 +1,6 @@
+.full-info{
+    height: 75vh;
+}
 .detailsPokemon-container{
     color: #fff;
     /* background-image: url("../images/gradient.jpg");
@@ -62,8 +65,6 @@
  align-items: center;
 
 
-
-
 }
 .first-abilities h1,.second-abilities h1, .third-abilities h1, .fourth-abilities h1, .fifth-abilities h1 , .sixth-abilities h1{
     /* flex: .4; */
@@ -91,22 +92,31 @@
     line-height: 30px;
    padding-right: 20px;
 }
-.describtion-details h2{
-    color: #633535;
-    font-size: 1rem;
+.describtion-details h2:first-child{
+    color: rgb(131, 81, 81);
+    font-size: 1.2rem;
     margin-top: 2rem;
     justify-self: center;
     width: 60%;
     margin-left: 3.5rem;
 }
-
+.describtion-details h2:nth-child(2){
+    color: #813838;
+    font-size: 1rem;
+    margin-top: 2rem;
+    justify-self: center;
+    width: 60%;
+    margin-left: 3.5rem;
+    font-weight: 400;
+    font-style: italic;
+}
 .back{
 
     justify-self: start;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 2rem;
+    margin: 2rem 0;
     font-weight: bold;
     padding-bottom: 3px;
     border-bottom: 2px solid #a05656;
@@ -167,4 +177,154 @@
     height: 20px !important;
     text-align: justify;
     width: 100%;
+}
+
+
+
+@media  screen and (max-width:1300px){
+ .leftDetails{
+    width: 100%;
+}
+.leftDetails h1{
+   
+    margin: 0 auto;
+}
+.leftDetails img{
+  
+    margin: 0 auto;
+}
+
+    .header-container{
+        height: auto;
+    }
+    .rightDetails{
+        width: 75vw;
+       
+    }
+    .full-info{
+        height: 80vh;
+    }
+    .detailsPokemon-container{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .main-abilities-info{
+        margin-left: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+    }
+    .logo-abilities{
+        display: block;
+        width: 30px;
+        height: 30px;
+        margin-right: 1rem;
+    }
+    .abilities-content h1{
+        font-size: 1rem;
+        color: rgb(236, 6, 6);     
+        font-weight: bold;
+    }
+
+    .main-abilities-info h2{
+        font-size: .8rem;
+    }
+    .logo-abilities{
+        width: 30px;
+        height: 30px;
+  
+    }
+    .back{
+        text-align: center;
+        margin: 3rem auto;
+        padding: 15px 30px;
+        background-color: rgb(235, 226, 226);
+        border-radius: 30px;
+        width: 20rem;
+        box-shadow: none;
+        border: none;
+        transform: translateX(-20px);
+       
+    }
+    .back:hover{
+        transform: none;
+    }
+    
+
+}
+
+@media  screen and (max-width:900px){
+   
+    .leftDetails h1{
+        font-size: 3.5rem;
+     
+    }
+    .leftDetails img{
+        width: 300px;
+       
+    }
+}
+
+@media  screen and (max-width:600px){
+    .abilities-content{
+       max-height: 100px;
+        margin: auto;
+    }
+    .main-abilities-info{
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1rem auto;
+        text-align: center;
+    }
+    .logo-abilities{
+      margin: 0 auto;
+    }
+    .fourth-abilities h1{
+       width: 60%;
+    }
+    .leftDetails h1{
+        font-size: 2.9rem;
+        margin: auto;
+    }
+    .leftDetails img{
+        width: 230px;
+        margin: auto;
+    }
+    .fourth-abilities{
+        display: block;
+        width: 80%;
+    }
+    .back{
+        text-align: center;
+        padding: 5px 15px;
+        font-size: .7rem;
+        width: 10rem; 
+    }
+
+
+}
+@media screen and (max-width:450px){
+
+  
+    .main-abilities{
+        flex-direction: column;
+    }
+    .abilities-content:not(:last-child){
+        margin-bottom: 1.5rem;
+    }
+}
+@media  screen and (max-width:350px){
+  
+
+    .back{
+        text-align: center;
+        padding: 8px 18px;
+        font-size: .6rem;
+        width: 8rem; 
+  
+    }
 }

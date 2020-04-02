@@ -18,3 +18,58 @@ h1{
     text-align: center;
     font-size: 2.5rem;
 }
+
+@media  screen and (max-width:1300px){
+    .header-container{
+        height: 20vh;
+    }
+   .header-container h1{
+        font-size: 2rem;
+    }
+    .header-container h3{
+        font-size: 1.5rem;
+    }
+    .four-pokemons{
+        width: 200px;
+    }
+    .pikachu{
+        width: 100px;
+    }
+}
+
+@media  screen and (max-width:900px){
+    .header-container{
+       flex-direction: column;
+    }
+   .header-container h1{
+        font-size: 2rem;
+        order: 1;
+    }
+    .header-container h3{
+        font-size: 1.5rem;
+    }
+    .four-pokemons{
+        width: 200px;
+        order: 2;
+    }
+    .pikachu{
+        width: 100px;
+        display: none;
+    }
+}
+
+@media  screen and (max-width:900px){
+  
+    .header-container h3{
+        margin: 1rem auto;
+        font-size: 1.1rem;
+        width: 70%;
+        text-align: center;
+    }
+}
+
+@media  screen and (max-width:350px){
+    .four-pokemons{
+        margin: 0 auto;
+    }
+}

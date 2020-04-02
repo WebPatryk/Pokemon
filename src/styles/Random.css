@@ -201,3 +201,18 @@
     }
 
 }
+
+@media  screen and (max-width:600px){
+    .animation-btn{
+        width: 50%;
+        margin: 0 auto;
+     
+        font-size: .5rem;
+    }
+    .text{
+        transform: translateX(-45%);
+        display: block;
+        width: 200px;
+
+    }
+}

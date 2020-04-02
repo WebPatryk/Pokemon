@@ -151,7 +151,7 @@ export default function DetailsPokemons(props) {
 
     const { id } = props.match.params;
     return (
-        <div style={{ height: "75vh" }}>
+        <div className="full-info">
             <Header />
             <div className="detailsPokemon-container">
 
@@ -277,7 +277,7 @@ export default function DetailsPokemons(props) {
 
                         <div className="describtion-details">
                             <h2>Describtion</h2>
-                            <h2>{describtion}</h2>
+                            <h2 >{describtion}</h2>
                         </div>
                     </div>
 

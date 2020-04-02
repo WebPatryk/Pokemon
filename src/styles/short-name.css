@@ -2,13 +2,15 @@
 
 }
 .center-info{
-     display: flex;
+    display: flex;
     justify-content: center;
-    width: 100%;
+    width: 40%;
     align-items: center;
     flex-direction: row;
     text-transform: uppercase;
-   
+    border: 2px solid rgba(187, 138, 138, 0.698);
+    border-radius: 10px;
+    margin: 0 auto;
 }
 .one-info, .two-info, .three-info{
     padding: 30px;
@@ -46,4 +48,63 @@ i{
 .buttonsDetails:hover{
     color: #fff;
     transform: scale(1.1);
+}
+
+
+@media  screen and (max-width:1300px){
+    .center-info{
+        width: 55%;
+    }
+}
+@media  screen and (max-width:1000px){
+    .center-info{
+        width: 80%;
+    }
+}
+@media  screen and (max-width:600px){
+    .center-info{
+        width: 80%;
+        margin:0 auto;
+    }
+    .info-details{
+        font-size: 1rem;
+    }
+    p{
+        font-size: 1rem;
+    }
+    .one-info, .two-info, .three-info{
+        padding:15px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    i{
+        font-size:1.2rem;
+        padding: 10px;  
+    }
+    .buttonsDetails{
+    width: 280px !important;
+    display: block;
+    margin: 4rem auto;
+    padding: 10px 20px;
+    font-size: .9rem;
+ 
+    }
+  
+}
+
+@media  screen and (max-width:400px){
+    .buttonsDetails{
+        width: 200px !important;
+        display: block;
+        margin: 4rem auto;
+        padding: 10px 20px;
+        font-size: .6rem;
+        }
+        .buttonsDetails i{
+            font-size: .7rem;
+        }
+        .center-info{
+           
+            flex-direction: column;
+        }
 }

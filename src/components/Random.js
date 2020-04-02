@@ -123,19 +123,15 @@ export default function Random() {
                     <span></span>
                     <span></span>
                     <span></span>
-                 Random your pokemon
-            </button>
+                    <div className="text">Random your pokemon</div>
+                </button>
 
             </div>
 
 
 
             <div className="center">
-                {/* {imageLoading ? <div className="space"></div> : <p>Loading...</p>}
-                {active && < RandomPokemon name={pokemons.name} id={pokemons.id} />}
 
-
-                {loading ? null : <ShortInfo describtion={pokemonsItems.effect_entries[0].effect} height={pokemons.height} weight={pokemons.weight} ability={pokemons.abilities[0].ability.name} id={pokemons.id} />} */}
 
                 {loading ? <Loader type="TailSpin" color="#somecolor" height={150} width={150} color="black" className="loading-animation" />
 

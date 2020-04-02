@@ -14,19 +14,25 @@
 .person{
     width: 240px;
 }
-.cloud{
+.cloud {
     align-self: flex-start;
     position: relative;
 }
+.cloud-img{
+    display: block;
+    padding-left: 150px;
+    width: 500px;
+  
+}
 .cloud-text{
     padding: 50px;
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: center;
-    width: 100%;
+    width: 80%;
     position: absolute;
     top:50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-30%,-50%);
 }
 
 .move-pokemon{
@@ -41,7 +47,10 @@
     animation-timing-function: ease-in;
     z-index: -1;
 }
-
+.personality{
+    display: flex;
+ 
+}
 
 @keyframes pokemonRun{
 0%{
@@ -58,4 +67,86 @@
     opacity: 0;
 
 }
+}
+
+@media  screen and (max-width:1300px){
+    img{
+        width: 260px;
+        margin-left: -3rem;
+    }
+    .gif-pokemon{
+        width: 250px;
+        
+    }
+    .person{
+        width: 140px;
+    }
+    .cloud-text {
+     font-size: 1rem;
+    }
+    .cloud-img{
+        display: block;
+        padding-left: 150px;
+        width: 400px;
+      
+    }
+    
+    .move-pokemon{
+        width: 150px;
+       
+    }
+}
+
+@media  screen and (max-width:900px){
+
+    .welcome-container{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        
+    }
+    .gif-pokemon{
+        margin: 2rem auto;
+        display: none;
+    }
+    .person{
+        margin-top: 10rem;
+        order: 2;
+       
+    }
+    .move-pokemon{
+        position: relative;
+        display: block;
+        margin: 5rem auto;
+        bottom:15%;
+        right: -23%;
+    }
+    .personality{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .cloud-img{
+        order:1 ;
+        display:none
+    }
+    .cloud-text {
+        text-align: center;
+        overflow: hidden;
+        text-align: center;
+        display: flex;
+        width: 64vw;
+        padding: 2rem;
+        font-size: 2rem;
+        margin-top: 2rem;
+        font-weight: bold;
+        color: rgb(255, 75, 75);
+       }
+}
+
+@media  screen and (max-width:350px){
+    .cloud-text {
+      font-size: 1.3rem;
+    }
 }

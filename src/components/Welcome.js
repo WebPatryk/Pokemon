@@ -24,16 +24,13 @@ export default function Welcome() {
             <Header />
             <div className="welcome-container">
                 <img src={gifPokemon} alt="pokemon" className="gif-pokemon" />
-                <img src={person} alt="person" className="person" />
-                <div className="cloud">
-                    <img src={cloud} alt="cloud" />
-                    <Typed strings={textLines} typeSpeed={50} className="cloud-text" loop={true} />
+                <div className="personality">
+                    <img src={person} alt="person" className="person" />
+                    <div className="cloud">
+                        <img src={cloud} alt="cloud" className="cloud-img" />
+                        <Typed strings={textLines} typeSpeed={50} className="cloud-text" loop={true} />
+                    </div>
                 </div>
-                {/* 
-            <img src={ball} alt="ball" className="ball" id="ball1" />
-            <img src={ball} alt="ball" className="ball" id="ball2" />
-            <img src={ball} alt="ball" className="ball" id="ball3" />
-            <img src={ball} alt="ball" className="ball" id="ball4" /> */}
                 <img src={movePokemon} alt="movePokemon" className="move-pokemon" />
 
             </div>
