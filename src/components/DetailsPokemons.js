@@ -23,14 +23,14 @@ export default function DetailsPokemons(props) {
             try {
                 const BasicPokeonInfo = await axios.get(pokemonMainURl);
                 const BasicPokeonInfoResponse = await BasicPokeonInfo.data;
-                setPokemnonsData(BasicPokeonInfoResponse)
+                setPokemnonsData(BasicPokeonInfoResponse);
             }
             catch{
-                throw new Error("Something was wrong, fetch incomplited")
+                throw new Error("Something was wrong, fetch incomplited");
             }
             try {
                 const PokemonsDetails = await axios.get(pokemonDetailsURL);
-                const PokemonsDetailsResponse = await PokemonsDetails.data
+                const PokemonsDetailsResponse = await PokemonsDetails.data;
 
                 let describtionPokemon = "";
 
@@ -38,50 +38,43 @@ export default function DetailsPokemons(props) {
                     if (flavor.language.name === 'en') {
                         describtionPokemon = flavor.flavor_text;
                     }
-
-                    return describtionPokemon
-                })
-                setDescribtion(describtionPokemon)
+                    return describtionPokemon;
+                });
+                setDescribtion(describtionPokemon);
 
             }
             catch{
-                throw new Error("Something was wrong, fetch incomplited")
+                throw new Error("Something was wrong, fetch incomplited");
             }
-
         }
-        fetchPokemon()
+        fetchPokemon();
 
-
-    }, [props.match.params])
+    }, [props.match.params]);
 
     const { id } = props.match.params;
-
 
     const heightPokemon = pokemonsData.height / 10;
     const weightPokemon = pokemonsData.weight / 10;
 
 
-
     if (!pokemonsData.abilities && !pokemonsData.stats) {
-        return <span>Loading...</span>
+        return <span>Loading...</span>;
     }
 
-
     //Destructuring assignment
-    const [firstAbility] = pokemonsData.abilities
-    const [speed, specialDefense, specialAttack, defence, attack, hp] = pokemonsData.stats;
+    const [firstAbility] = pokemonsData.abilities;
+    const [speed, , defence, attack, hp] = pokemonsData.stats;
 
     //Destructuring abilities
-    const abilityName = firstAbility.ability.name
+    const abilityName = firstAbility.ability.name;
     const pokemonName = pokemonsData.name;
     const pokemonPhoto = 'https://pokeres.bastionbot.org/images/pokemon/' + id + '.png';
     const attactQuantity = attack.base_stat;
     const hpQuantity = hp.base_stat;
     const speedQuantity = speed.base_stat;
-    const defenceQuantity = defence.base_stat
+    const defenceQuantity = defence.base_stat;
 
-
-    const AbilityFirstLowerUpp = abilityName.split(" ").map(letter => letter.charAt(0).toUpperCase() + letter.slice(1))
+    const AbilityFirstLowerUpp = abilityName.split(" ").map(letter => letter.charAt(0).toUpperCase() + letter.slice(1));
 
     return (
         <div className="full-info">
@@ -125,8 +118,6 @@ export default function DetailsPokemons(props) {
                         </div>
                     </div>
 
-
-
                     <div className="full-abilites">
 
                         {
@@ -147,7 +138,6 @@ export default function DetailsPokemons(props) {
                                 </div>
                             </div>
                         }
-
 
                         {
                             <div className="fourth-abilities">
@@ -213,7 +203,7 @@ export default function DetailsPokemons(props) {
                     </div>
 
                     <Link to="/" style={{ textDecoration: "none", width: "220px" }}><div className="back">
-                        <i class="fas fa-arrow-circle-left"></i>
+                        <i className="fas fa-arrow-circle-left"></i>
                         <span>Back To HomePage</span>
                     </div>
                     </Link>
@@ -221,5 +211,5 @@ export default function DetailsPokemons(props) {
             </div>
         </div>
 
-    )
+    );
 }

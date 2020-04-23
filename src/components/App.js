@@ -3,8 +3,7 @@ import Welcome from './Welcome';
 import DetailsPokemos from './DetailsPokemons';
 import '../styles/App.css';
 
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 function App() {
   return (
     <>

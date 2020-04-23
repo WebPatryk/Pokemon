@@ -4,6 +4,7 @@ import fourPokemons from '../images/fourPokemons.png';
 import Pikachu from '../images/Pikachu.png';
 
 function Header() {
+
     return (
         <div className="header-container">
             <img src={fourPokemons} alt="pokemon" className="four-pokemons" />
@@ -13,6 +14,6 @@ function Header() {
             </div>
             <img src={Pikachu} alt="pokemon Pikatchu" className="pikachu" />
         </div>
-    )
+    );
 }
 export default Header;

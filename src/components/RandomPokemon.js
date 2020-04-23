@@ -1,10 +1,7 @@
 import React from 'react';
 import '../styles/RandomPokemon.css';
 
-
 export default function RandomPokemon({ name, id }) {
-
-
 
     return (
         <div className="pokemon-field">
@@ -14,9 +11,6 @@ export default function RandomPokemon({ name, id }) {
                 <img src={"https://pokeres.bastionbot.org/images/pokemon/" + id + ".png"} alt="pokemon" className="pokemon-photo" />
 
             </div>
-
-
-
         </div>
     );
 }

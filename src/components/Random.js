@@ -25,7 +25,7 @@ export default function Random() {
 
     }
 
-    const fetchPokemon = () => {
+    const fetchPokemonWithTimeOut = () => {
         setTimeout(() => {
             pokemonsFetch();
             setLoadingRandom(true);
@@ -48,15 +48,13 @@ export default function Random() {
             }
         }
 
-
         setLoadingPhotoName(true);
-
     };
 
     return (
         <Suspense fallback={<div>Loading...</div>}>
             <div className="random-container">
-                <FetchPokemonCom random={fetchPokemon} />
+                <FetchPokemonCom random={fetchPokemonWithTimeOut} />
                 <div className="center">
                     {loadingPhotoName ? <Loader type="TailSpin" color="black" height={150} width={150} className="loading-animation" />
                         :

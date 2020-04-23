@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 import person from '../images/person.png';
 import cloud from '../images/cloud.png';
 import gifPokemon from '../images/gifPokemon.gif';
 import movePokemon from '../images/movePokemon.gif';
 import '../styles/Welcome.css';
-import Random from './Random'
+import Random from './Random';
 import Header from './Header';
 import Typed from "react-typed";
 
@@ -34,5 +34,5 @@ export default function Welcome() {
             <Random />
         </>
 
-    )
+    );
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import twoPokemons from '../images/2pokemons.gif';
 import Typed from "react-typed";
 import '../styles/ChooseLoading.css';
@@ -8,8 +8,8 @@ const chooseLines = [
     `↑Click the button below ↑`,
 ];
 
-
 export default function ChooseLoading() {
+
 
     const PhotoPokemonStyle = {
         display: "block",
@@ -29,5 +29,5 @@ export default function ChooseLoading() {
             <Typed strings={chooseLines} typeSpeed={50} loop={true} style={TypedChoose} className="typing-pokemon" />
             <img src={twoPokemons} alt="pokemon" style={PhotoPokemonStyle} />
         </>
-    )
+    );
 }
