@@ -1,156 +1,76 @@
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
+import Loader from 'react-loader-spinner';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import '../styles/Random.css';
-import Loader from 'react-loader-spinner'
 import RandomPokemon from './RandomPokemon';
 import ShortInfo from './ShortInfo';
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import ChooseLoading from './ChooseLoading';
 
+const FetchPokemonCom = lazy(() => import('./FetchPokemonCom'));
+const ChooseLoading = lazy(() => import('./ChooseLoading'));
 
 
 export default function Random() {
 
-    const [pokemons, setPokemons] = useState({})
-    const [pokemonsItems, setPokemonsItems] = useState({})
-    const [active, setActive] = useState(false)
-    const [loading, setLoading] = useState(false)
-    const [imageLoading, setImageLoading] = useState(false)
-    const [loadingg, setLoadingg] = useState(false)
-    const [space, setSpace] = useState(true)
-    const [loading2, setLoading2] = useState(false)
-    const [failed, setFailed] = useState(false)
+    const [pokemons, setPokemons] = useState([]);
+    const [loadingPhotoName, setLoadingPhotoName] = useState(false);
+    const [loadingRandom, setLoadingRandom] = useState(false);
+    const [loadingDetails, setLoadingDetails] = useState(false);
 
-
-
-
-    // useEffect(() => {
-    //     fetchPokemon();
-    // }, [])
 
 
     function randomID() {
         const min = Math.floor(1);
         const max = Math.floor(800);
-        return Math.floor(Math.random() * (max - min) + 1) + min
+        return Math.floor(Math.random() * (max - min) + 1) + min;
 
     }
-
-
 
     const fetchPokemon = () => {
         setTimeout(() => {
-            pokemonsFetch()
-            fetchPokemons2()
-            setLoadingg(true)
+            pokemonsFetch();
+            setLoadingRandom(true);
+            setLoadingDetails(true);
 
-        }, 2000)
+        }, 1500);
 
-        setTimeout(() => {
-            setLoading2(true)
-        }, 3500)
 
         async function pokemonsFetch() {
             try {
-                const response = await fetch('https://pokeapi.co/api/v2/pokemon/' + randomID());
-                const data = await response.json()
-                setPokemons(data)
-                setLoading(false)
+                const RandomPokemon = await fetch('https://pokeapi.co/api/v2/pokemon/' + randomID());
+                const RandomPokemonData = await RandomPokemon.json();
+
+                setPokemons(RandomPokemonData);
+                setLoadingPhotoName(false);
 
             }
             catch (err) {
                 console.log(err);
             }
-
-            // setLoadingg(true)
         }
 
 
-        setActive(true)
-        // setLoadingg(true)
-        setLoading(true)
+        setLoadingPhotoName(true);
 
-        // setTimeout(() => {
-        //     setPokemons(data)
-        //     setSpace(false)
-        //     setLoading(false)
-        //     setImageLoading(false)
-        // }, 2500)
-
-
-
-        async function fetchPokemons2() {
-            try {
-                const response2 = await fetch('https://pokeapi.co/api/v2/item/' + randomID())
-                const data2 = await response2.json();
-                setPokemonsItems(data2)
-
-            }
-            catch (err) {
-                console.log(err);
-            }
-
-            // console.log(data2.effect_entries[0].effect);
-        }
-
-
-
-
-
-
-    }
-
-
-
-    console.log(pokemonsItems);
-
-
-    function failedFetch() {
-        console.log('error');
-        setFailed(true)
-    }
+    };
 
     return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <div className="random-container">
+                <FetchPokemonCom random={fetchPokemon} />
+                <div className="center">
+                    {loadingPhotoName ? <Loader type="TailSpin" color="black" height={150} width={150} className="loading-animation" />
+                        :
+                        (
+                            <div className="random-screen">
+                                {loadingRandom ? < RandomPokemon name={pokemons.name} id={pokemons.id} /> : <ChooseLoading />}
 
-
-
-        <div className="random-container">
-
-            {/* <button className="btn-random-pokemon" onClick={fetchPokemon}>Random your pokemon</button> */}
-
-            <div className="pokemon-random" onClick={fetchPokemon}>
-                <button className="animation-btn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <div className="text">Random your pokemon</div>
-                </button>
-
-            </div>
-
-
-
-            <div className="center">
-
-
-                {loading ? <Loader type="TailSpin" color="#somecolor" height={150} width={150} color="black" className="loading-animation" />
-
-                    :
-                    (
-                        <div className="random-screen">
-                            {loadingg ? < RandomPokemon name={pokemons.name} id={pokemons.id} /> : <ChooseLoading />}
-
-                            <div>
-                                {loading2 && <ShortInfo describtion={pokemonsItems.effect_entries[0].effect} height={pokemons.height} weight={pokemons.weight} ability={pokemons.abilities[0].ability.name} id={pokemons.id} onError={failedFetch} />}
+                                <div>
+                                    {loadingDetails && <ShortInfo height={pokemons.height} weight={pokemons.weight} id={pokemons.id} ability={pokemons.abilities[0].ability.name} />}
+                                </div>
                             </div>
-
-
-
-                        </div>
-                    )}
-
+                        )}
+                </div>
             </div>
-
-        </div>
-    )
+        </Suspense>
+    );
 }

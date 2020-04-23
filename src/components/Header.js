@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/Header.css';
-import fourPokemons from "../images/fourPokemons.png";
+import fourPokemons from '../images/fourPokemons.png';
 import Pikachu from '../images/Pikachu.png';
 
 function Header() {

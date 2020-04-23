@@ -1,11 +1,14 @@
 import React from 'react';
-import "../styles/short-name.css";
+import '../styles/short-name.css';
 import { Link } from 'react-router-dom';
 
 export default function ShortInfo({ height, weight, ability, id }) {
 
 
-    // const heightPokemon = Math.round((height * 0.328084 + 0.0001) * 100) / 100;
+    if (!weight) {
+        return <p>Loading...</p>
+    }
+
     const weightPokemon = weight / 10
     const heightPokemon = height / 10
 

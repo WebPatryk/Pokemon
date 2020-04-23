@@ -1,8 +1,12 @@
 .random-container{
     color:#FF8000;
     background-color: rgba(245, 180, 180, 0.226);
-   height: 130vh;
-   position: relative;
+    height: 130vh;
+    position: relative;
+    padding-top: 2rem;
+    min-height: 40rem;
+    padding-bottom: 2rem;
+    height: auto;
 }
 
 .btn-random-pokemon{
@@ -69,13 +73,6 @@
         transform: scale(1.2);
     }
 }
-/* .random-screen{
-    background-color: rgba(245, 180, 180, 0.055);
-
-} */
-
-
-/* --------------------------------------------- */
 
 .pokemon-random{
     display: block;

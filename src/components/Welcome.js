@@ -1,13 +1,11 @@
 import React from 'react'
 import person from '../images/person.png';
 import cloud from '../images/cloud.png';
-// import ball from '../images/ball.png';
 import gifPokemon from '../images/gifPokemon.gif';
 import movePokemon from '../images/movePokemon.gif';
 import '../styles/Welcome.css';
 import Random from './Random'
 import Header from './Header';
-
 import Typed from "react-typed";
 
 const textLines = [
@@ -32,7 +30,6 @@ export default function Welcome() {
                     </div>
                 </div>
                 <img src={movePokemon} alt="movePokemon" className="move-pokemon" />
-
             </div>
             <Random />
         </>

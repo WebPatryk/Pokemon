@@ -1,172 +1,102 @@
 import React, { useState, useEffect } from 'react';
-import "../styles/DetailsPokemon.css";
+import '../styles/DetailsPokemon.css';
 import Header from './Header';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
-import abilities from '../images/abilities.png'
-import height from '../images/height.png'
-import weight from '../images/weight.png'
 import axios from 'axios';
-
+import abilities from '../images/abilities.png';
+import height from '../images/height.png';
+import weight from '../images/weight.png';
 
 export default function DetailsPokemons(props) {
 
     const [pokemonsData, setPokemnonsData] = useState([]);
-    const [pokemonsData2, setPokemnonsData2] = useState([]);
-    const [states, setStates] = useState(true)
-    const [abilitess, setAbilitiess] = useState(true)
-    const [activeLoaing, setActiveLoading] = useState(false);
-    const [species, setSpecies] = useState([])
     const [describtion, setDescribtion] = useState('');
 
     useEffect(() => {
         async function fetchPokemon() {
             const { id } = props.match.params;
-            const pokemonURl = `https://pokeapi.co/api/v2/pokemon/${id}/`;
-            // const abilitiesURL = `pokemon-species/${id}`
-            const fetch2 = `https://pokeapi.co/api/v2/pokemon-species/${id}`;
 
+            const pokemonMainURl = `https://pokeapi.co/api/v2/pokemon/${id}/`;
+            const pokemonDetailsURL = `https://pokeapi.co/api/v2/pokemon-species/${id}`;
 
-            axios.get(pokemonURl)
-                .then(res => {
-                    const persons = res.data;
-                    setPokemnonsData(persons)
+            try {
+                const BasicPokeonInfo = await axios.get(pokemonMainURl);
+                const BasicPokeonInfoResponse = await BasicPokeonInfo.data;
+                setPokemnonsData(BasicPokeonInfoResponse)
+            }
+            catch{
+                throw new Error("Something was wrong, fetch incomplited")
+            }
+            try {
+                const PokemonsDetails = await axios.get(pokemonDetailsURL);
+                const PokemonsDetailsResponse = await PokemonsDetails.data
+
+                let describtionPokemon = "";
+
+                PokemonsDetailsResponse.flavor_text_entries.some(flavor => {
+                    if (flavor.language.name === 'en') {
+                        describtionPokemon = flavor.flavor_text;
+                    }
+
+                    return describtionPokemon
                 })
+                setDescribtion(describtionPokemon)
 
-
-
-
-            fetch(fetch2)
-                .then(res => res.json())
-                .then(res => {
-                    let describe = '';
-
-                    res.flavor_text_entries.some(flavor => {
-                        if (flavor.language.name === 'en') {
-                            describe = flavor.flavor_text;
-
-                        }
-
-                        return describe
-
-
-                    })
-                    setDescribtion(describe)
-
-
-                })
-
-
-
-
-            // const name = resPok.data.name;
-            // console.log(name);
-
+            }
+            catch{
+                throw new Error("Something was wrong, fetch incomplited")
+            }
 
         }
         fetchPokemon()
 
-        // fetch(pokemonURl)
-        //     .then(res => res.json())
-        //     .then(data => setPokemnonsData(data))
 
-        setStates(false)
-        setAbilitiess(false)
+    }, [props.match.params])
 
-
-
-
-
-
-
-
-
-
-
-
-        // fetch(fetch2)
-        //     .then(res => res.json())
-
-        //     .then(data => setSpecies(data.flavor_text_entries[1].flavor_text))
-
-
-        // pokemonsData.stats.map(stat => {
-        //     let { hp, attack, defense, speed, specialAttack } = '';
-
-        //     switch (stat.stat.name) {
-        //         case 'hp':
-        //             hp = stat['base_stat'];
-        //             break;
-        //         case 'attack':
-        //             attack = stat['base_stat'];
-        //             break;
-        //         default:
-        //     }
-
-
-        // })
-
-
-
-    }, [])
-
-    console.log(species);
-
-    // setTimeout(() => {
-    //     console.log(pokemonsData.abilities[0].ability.name);
-    // }, 3000)
-
-    // setTimeout(() => {
-    //     console.log(pokemonsData.stats.map(stat => stat.stat.name));
-    // }, 2000)
-
-
-
-
-
-
-
-    // pokemonsData.stats.map(stat => {
-
-    //     console.log(stat.stat.name);
-    //     switch (stat.stat.name) {
-    //         case 'hp':
-    //             hp = stat['base_stat'];
-    //             break;
-    //         case 'attack':
-    //             attack = stat['base_stat'];
-    //             break;
-
-    //     }
-
-
-    // })
-
-    console.log(pokemonsData);
+    const { id } = props.match.params;
 
 
     const heightPokemon = pokemonsData.height / 10;
     const weightPokemon = pokemonsData.weight / 10;
 
 
-    const { id } = props.match.params;
+
+    if (!pokemonsData.abilities && !pokemonsData.stats) {
+        return <span>Loading...</span>
+    }
+
+
+    //Destructuring assignment
+    const [firstAbility] = pokemonsData.abilities
+    const [speed, specialDefense, specialAttack, defence, attack, hp] = pokemonsData.stats;
+
+    //Destructuring abilities
+    const abilityName = firstAbility.ability.name
+    const pokemonName = pokemonsData.name;
+    const pokemonPhoto = 'https://pokeres.bastionbot.org/images/pokemon/' + id + '.png';
+    const attactQuantity = attack.base_stat;
+    const hpQuantity = hp.base_stat;
+    const speedQuantity = speed.base_stat;
+    const defenceQuantity = defence.base_stat
+
+
+    const AbilityFirstLowerUpp = abilityName.split(" ").map(letter => letter.charAt(0).toUpperCase() + letter.slice(1))
+
     return (
         <div className="full-info">
             <Header />
             <div className="detailsPokemon-container">
 
                 <div className="leftDetails">
-                    <h1>{pokemonsData.name}</h1>
+                    <h1>{pokemonName}</h1>
                     <div className="photoDetials">
-                        <img src={'https://pokeres.bastionbot.org/images/pokemon/' + id + '.png'} alt="pokemon" />
+                        <img src={pokemonPhoto} alt={pokemonName} />
                     </div>
 
                 </div>
 
-
-
                 <div className="rightDetails">
-
 
                     <div className="main-abilities">
 
@@ -174,8 +104,7 @@ export default function DetailsPokemons(props) {
                             <h1>Basic skill</h1>
                             <div className="main-abilities-info">
                                 <img src={abilities} alt="abilities" className="logo-abilities" />
-                                <h2>{pokemonsData.abilities && pokemonsData.abilities[0].ability.name}</h2>
-
+                                <h2>{AbilityFirstLowerUpp}</h2>
                             </div>
                         </div>
 
@@ -200,80 +129,82 @@ export default function DetailsPokemons(props) {
 
                     <div className="full-abilites">
 
-
-                        {/* {pokemonsData.stats && JSON.stringify(pokemonsData.stats[5].base_stat)} */}
-
-                        {pokemonsData.stats &&
+                        {
                             <div className="fourth-abilities">
                                 <h1>Attack</h1>
                                 <div className='progress'>
                                     <div className='progress-bar'
                                         role='progressbar'
-                                        aria-valuenow={25}
+                                        aria-valuenow={attactQuantity}
                                         aria-valuemin={0}
                                         aria-valuemax={100}
-                                        style={{ width: `${pokemonsData.stats[4].base_stat}%`, backgroundColor: "#E88C99" }}>
-                                        {pokemonsData.stats[4].base_stat}
+                                        style={{
+                                            width: `${attactQuantity}%`,
+                                            backgroundColor: "#E88C99"
+                                        }}>
+                                        {attactQuantity}
                                     </div>
                                 </div>
                             </div>
                         }
 
 
-
-                        {pokemonsData.stats &&
+                        {
                             <div className="fourth-abilities">
                                 <h1>HP</h1>
                                 <div className='progress'>
                                     <div className='progress-bar'
                                         role='progressbar'
-                                        aria-valuenow={25}
+                                        aria-valuenow={hpQuantity}
                                         aria-valuemin={0}
                                         aria-valuemax={100}
-                                        style={{ width: `${pokemonsData.stats[5].base_stat}%`, backgroundColor: "#E88C99" }}>
-                                        {pokemonsData.stats[5].base_stat}
+                                        style={{
+                                            width: `${hpQuantity}%`,
+                                            backgroundColor: "#E88C99"
+                                        }}>
+                                        {hpQuantity}
                                     </div>
                                 </div>
                             </div>
                         }
 
-                        {pokemonsData.stats &&
+                        {
                             <div className="fourth-abilities">
                                 <h1>Speed</h1>
                                 <div className='progress'>
                                     <div className='progress-bar'
                                         role='progressbar'
-                                        aria-valuenow={25}
+                                        aria-valuenow={speedQuantity}
                                         aria-valuemin={0}
                                         aria-valuemax={100}
-                                        style={{ width: `${pokemonsData.stats[0].base_stat}%`, backgroundColor: "#E88C99" }}>
-                                        {pokemonsData.stats[0].base_stat}
+                                        style={{
+                                            width: `${speedQuantity}%`,
+                                            backgroundColor: "#E88C99"
+                                        }}>
+                                        {speedQuantity}
                                     </div>
                                 </div>
                             </div>
                         }
 
-                        {pokemonsData.stats &&
+                        {
                             <div className="fourth-abilities">
                                 <h1>Deffence</h1>
                                 <div className='progress'>
                                     <div className='progress-bar'
                                         role='progressbar'
-                                        aria-valuenow={25}
+                                        aria-valuenow={defenceQuantity}
                                         aria-valuemin={0}
                                         aria-valuemax={100}
-                                        style={{ width: `${pokemonsData.stats[3].base_stat}%`, backgroundColor: "#E88C99" }}>
-                                        {pokemonsData.stats[3].base_stat}
+                                        style={{
+                                            width: `${defenceQuantity}%`,
+                                            backgroundColor: "#E88C99"
+                                        }}>
+                                        {defenceQuantity}
                                     </div>
                                 </div>
                             </div>
                         }
-
-
-
-
-
-
 
                         <div className="describtion-details">
                             <h2>Describtion</h2>
@@ -287,11 +218,8 @@ export default function DetailsPokemons(props) {
                     </div>
                     </Link>
                 </div>
-
-
             </div>
         </div>
-
 
     )
 }
