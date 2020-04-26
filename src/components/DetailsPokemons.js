@@ -63,7 +63,7 @@ export default function DetailsPokemons(props) {
 
     //Destructuring assignment
     const [firstAbility] = pokemonsData.abilities;
-    const [speed, , defence, attack, hp] = pokemonsData.stats;
+    const [speed, , , defence, attack, hp] = pokemonsData.stats;
 
     //Destructuring abilities
     const abilityName = firstAbility.ability.name;
