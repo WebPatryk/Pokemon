@@ -10,6 +10,11 @@ Are you a fun of pokemons? If yes, this application is for you. Pokemons app is 
 ### Installation 
 
 ``` Usage
+ npm install 
+```
+Next:
+
+``` Usage
  npm start 
 ```
 Clone this app to your computer. Get on to the local file and run this command.
